@@ -1,0 +1,247 @@
+@import 'config';
+
+* { box-sizing: border-box }
+
+html,
+body {
+	height: 100%;
+	line-height: 1.4;
+}
+
+body {
+	font-family: "Ubuntu", sans-serif;
+	background-color: @color-primary-lighter;
+	color: @color-primary-lightest;
+	padding: 1rem;
+
+	@media @mq-sm {
+		padding: .5rem;
+	}
+}
+
+a {
+	color: @color-secondary;
+	text-decoration: none;
+	transition: color .2s;
+
+	&:hover, &:focus {
+		color: lighten(@color-secondary, 20%);
+	}
+}
+
+.intro {
+	width: 40em;
+	margin: auto;
+	position: relative;
+	top: 40%;
+	transform: translateY(-50%);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: @color-primary-lightest;
+
+	h1 {
+		font-size: 2.5em;
+		margin: 0 0 .8rem;
+		color: @color-secondary-light;
+	}
+
+	p {
+		margin: 0 0 1rem;
+	}
+
+	a {
+		color: @color-secondary-light;
+	}
+}
+
+.main {
+	width: 100%;
+	max-width: 80em;
+	margin: auto;
+	background-color: @color-primary-dark;
+	color: @color-primary-lightest;
+	box-shadow: 0 17px 35px -10px fade(@color-primary-darker, 50%);
+	border-radius: 4px;
+
+	header {
+		padding: 1rem 2rem;
+		background-color: @color-secondary;
+		color: #fff;
+		border-radius: 4px 4px 0 0;
+		font-size: .9rem;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+
+		@media @mq-sm {
+			padding: .5rem 1rem;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: 1.4rem;
+			flex: 1;
+			font-weight: normal;
+		}
+
+		.referer {
+			font-family: 'Inconsolata', monospace;
+			b {
+				opacity: .5;
+				font-weight: normal;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	main {
+		padding: 2rem 2rem .5rem;
+
+		@media @mq-sm {
+			padding: 1rem 1rem .5rem;
+		}
+	}
+
+	footer {
+		font-size: .8em;
+		padding: 0 2rem .5rem;
+		text-align: right;
+		color: fade(@color-primary-lightest, 50%);
+
+		a {
+			color: currentColor;
+			padding: 0 .3em;
+
+			&:hover {
+				color: @color-primary-lightest;
+			}
+
+			&:after {
+				content: "\2022";
+				display: inline-block;
+				margin-left: .6em;
+			}
+
+			&:last-child:after {
+				content: none;
+			}
+		}
+
+		form {
+			display: inline-block;
+			padding-right: .3em;
+
+			&:after {
+				content: "\2022";
+				display: inline-block;
+				margin-left: .6em;
+			}
+		}
+
+		button {
+			background-color: transparent;
+			border: none;
+			color: inherit;
+			padding: 0;
+			transition: color .2s;
+
+			&:hover {
+				color: @color-primary-lightest;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	font-family: "Inconsolata", monospace;
+}
+
+thead,
+tfoot {
+	th, td {
+		text-align: left;
+		padding: .3rem 1rem;
+		border: 1px solid @color-primary-light;
+		color: darken(@color-primary-lightest, 25%);
+	}
+
+	@media @mq-sm {
+		display: none;
+	}
+}
+
+
+tbody {
+	th, td {
+		padding: .5rem 1rem;
+		border: 1px solid @color-primary-light;
+		text-align: left;
+		vertical-align: top;
+
+		@media @mq-sm {
+			padding: .3rem .5rem;
+			font-size: .9em;
+			display: block;
+		}
+	}
+
+	th {
+		width: 30%;
+		font-weight: normal;
+		position: relative;
+		padding-right: 4rem;
+		background-color: @color-primary;
+
+		@media @mq-sm {
+			width: 100%;
+		}
+
+		small {
+			position: absolute;
+			top: .8em;
+			right: 1em;
+			width: 4em;
+			text-align: right;
+			color: fade(@color-primary-lightest, 50%);
+		}
+	}
+
+	td {
+		min-height: 2em;
+
+		@media @mq-sm {
+			border-top: none;
+			margin-bottom: 1rem;
+		}
+
+		&.type-multi {
+			padding: 0;
+		}
+
+		table {
+			box-shadow: none;
+			border-style: hidden;
+
+			@media @mq-sm {
+				th, td {
+					display: table-cell;
+				}
+			}
+
+			th {
+				width: 20%;
+				background-color: transparent;
+
+				@media @mq-sm {
+					width: auto;
+					max-width: 50%;
+				}
+			}
+		}
+	}
+}

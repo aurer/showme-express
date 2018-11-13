@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  line-height: 1.4;
+}
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: #374c68;
+  color: #88a3c5;
+  padding: 1rem;
+}
+@media screen and (max-width: 30em) {
+  body {
+    padding: 0.5rem;
+  }
+}
+a {
+  color: #006FFF;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover,
+a:focus {
+  color: #66a9ff;
+}
+.intro {
+  width: 40em;
+  margin: auto;
+  position: relative;
+  top: 40%;
+  transform: translateY(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #88a3c5;
+}
+.intro h1 {
+  font-size: 2.5em;
+  margin: 0 0 0.8rem;
+  color: #e3efff;
+}
+.intro p {
+  margin: 0 0 1rem;
+}
+.intro a {
+  color: #e3efff;
+}
+.main {
+  width: 100%;
+  max-width: 80em;
+  margin: auto;
+  background-color: #172431;
+  color: #88a3c5;
+  box-shadow: 0 17px 35px -10px rgba(17, 26, 35, 0.5);
+  border-radius: 4px;
+}
+.main header {
+  padding: 1rem 2rem;
+  background-color: #006FFF;
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+@media screen and (max-width: 30em) {
+  .main header {
+    padding: 0.5rem 1rem;
+  }
+}
+.main header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  flex: 1;
+  font-weight: normal;
+}
+.main header .referer {
+  font-family: 'Inconsolata', monospace;
+}
+.main header .referer b {
+  opacity: 0.5;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.main main {
+  padding: 2rem 2rem 0.5rem;
+}
+@media screen and (max-width: 30em) {
+  .main main {
+    padding: 1rem 1rem 0.5rem;
+  }
+}
+.main footer {
+  font-size: 0.8em;
+  padding: 0 2rem 0.5rem;
+  text-align: right;
+  color: rgba(136, 163, 197, 0.5);
+}
+.main footer a {
+  color: currentColor;
+  padding: 0 0.3em;
+}
+.main footer a:hover {
+  color: #88a3c5;
+}
+.main footer a:after {
+  content: "\2022";
+  display: inline-block;
+  margin-left: 0.6em;
+}
+.main footer a:last-child:after {
+  content: none;
+}
+.main footer form {
+  display: inline-block;
+  padding-right: 0.3em;
+}
+.main footer form:after {
+  content: "\2022";
+  display: inline-block;
+  margin-left: 0.6em;
+}
+.main footer button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  transition: color 0.2s;
+}
+.main footer button:hover {
+  color: #88a3c5;
+  cursor: pointer;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: "Inconsolata", monospace;
+}
+thead th,
+tfoot th,
+thead td,
+tfoot td {
+  text-align: left;
+  padding: 0.3rem 1rem;
+  border: 1px solid #2b4467;
+  color: #43638a;
+}
+@media screen and (max-width: 30em) {
+  thead,
+  tfoot {
+    display: none;
+  }
+}
+tbody th,
+tbody td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #2b4467;
+  text-align: left;
+  vertical-align: top;
+}
+@media screen and (max-width: 30em) {
+  tbody th,
+  tbody td {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9em;
+    display: block;
+  }
+}
+tbody th {
+  width: 30%;
+  font-weight: normal;
+  position: relative;
+  padding-right: 4rem;
+  background-color: #1c2e44;
+}
+@media screen and (max-width: 30em) {
+  tbody th {
+    width: 100%;
+  }
+}
+tbody th small {
+  position: absolute;
+  top: 0.8em;
+  right: 1em;
+  width: 4em;
+  text-align: right;
+  color: rgba(136, 163, 197, 0.5);
+}
+tbody td {
+  min-height: 2em;
+}
+@media screen and (max-width: 30em) {
+  tbody td {
+    border-top: none;
+    margin-bottom: 1rem;
+  }
+}
+tbody td.type-multi {
+  padding: 0;
+}
+tbody td table {
+  box-shadow: none;
+  border-style: hidden;
+}
+@media screen and (max-width: 30em) {
+  tbody td table th,
+  tbody td table td {
+    display: table-cell;
+  }
+}
+tbody td table th {
+  width: 20%;
+  background-color: transparent;
+}
+@media screen and (max-width: 30em) {
+  tbody td table th {
+    width: auto;
+    max-width: 50%;
+  }
+}

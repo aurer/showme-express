@@ -1,0 +1,55 @@
+extends layout/default
+
+block primary
+	if request.getParams().length
+		section.main
+			header
+				h1 Showme
+				if request.getReferer()
+					div.referer
+						b Referer:
+						span= request.getReferer()
+			main
+				table
+					thead
+						tr
+							th Name
+							th Value
+					tbody
+						each param in request.getParams()
+							tr
+								th= param.name
+									small= param.type
+								if typeof param.value == 'string'
+									td.type-single= param.value
+								else
+									td.type-multi
+										table
+											each val,key in param.value
+												tr
+													th= key
+													td= val
+					if request.action
+						tfoot
+							tr
+								td Form action
+								td
+									a(target="_blank" href=request.action)= request.action
+			footer
+				if !request.isCache()
+					form(action="/save" enctype="multipart/form-data" method="post")
+						input(type="hidden" name="serialised" value=request.getSerlialised())
+						input(type="hidden" name="hash" value=request.getHash(request.getSerlialised()))
+						button(type="submit") Share
+				a(href="https://aurer.co.uk" target="_blank") &copy;aurer #{new Date().getFullYear()}
+				a(href="https://github.com/aurer/showme" target="_blank") Github
+	else
+		section.intro
+			h1 Showme
+			p
+				Send a POST or 
+				a(href="?Something=Like+this...") GET
+				|  request here to inspect it's values.
+			p
+				a(href="https://github.com/aurer/showme/tree/master/assets/dist/bookmarklets" target="_blank") These bookmarklets
+				|  might help.
