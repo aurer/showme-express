@@ -10,7 +10,8 @@ body {
   font-family: "Ubuntu", sans-serif;
   background-color: #374c68;
   color: #88a3c5;
-  padding: 1rem;
+  padding: 1rem 1rem 0;
+  margin: 0;
 }
 @media screen and (max-width: 30em) {
   body {
@@ -51,8 +52,7 @@ a:focus {
 }
 .main {
   width: 100%;
-  max-width: 80em;
-  margin: auto;
+  margin: 0 auto 1rem;
   background-color: #172431;
   color: #88a3c5;
   box-shadow: 0 17px 35px -10px rgba(17, 26, 35, 0.5);
@@ -193,6 +193,7 @@ tbody th small {
 }
 tbody td {
   min-height: 2em;
+  word-break: break-all;
 }
 @media screen and (max-width: 30em) {
   tbody td {

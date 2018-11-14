@@ -12,7 +12,8 @@ body {
 	font-family: "Ubuntu", sans-serif;
 	background-color: @color-primary-lighter;
 	color: @color-primary-lightest;
-	padding: 1rem;
+  padding: 1rem 1rem 0;
+  margin: 0;
 
 	@media @mq-sm {
 		padding: .5rem;
@@ -58,8 +59,7 @@ a {
 
 .main {
 	width: 100%;
-	max-width: 80em;
-	margin: auto;
+	margin: 0 auto 1rem;
 	background-color: @color-primary-dark;
 	color: @color-primary-lightest;
 	box-shadow: 0 17px 35px -10px fade(@color-primary-darker, 50%);
@@ -213,6 +213,7 @@ tbody {
 
 	td {
 		min-height: 2em;
+		word-break: break-all;
 
 		@media @mq-sm {
 			border-top: none;
