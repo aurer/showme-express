@@ -10,7 +10,7 @@ body {
   font-family: "Ubuntu", sans-serif;
   background-color: #374c68;
   color: #88a3c5;
-  padding: 1rem 1rem 0;
+  padding: 2rem 1rem 0;
   margin: 0;
 }
 @media screen and (max-width: 30em) {
@@ -52,7 +52,8 @@ a:focus {
 }
 .main {
   width: 100%;
-  margin: 0 auto 1rem;
+  max-width: 90rem;
+  margin: 0 auto 2rem;
   background-color: #172431;
   color: #88a3c5;
   box-shadow: 0 17px 35px -10px rgba(17, 26, 35, 0.5);

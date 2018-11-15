@@ -1,0 +1,38 @@
+extends layout/default
+
+block primary
+    form(action="/" method="get")
+        input(type="hidden" name="basic_field_1" value="Basic field 1")
+        input(type="hidden" name="basic_field_2" value="Basic field 2")
+        input(type="hidden" name="array_field[]" value="Array field 1")
+        input(type="hidden" name="array_field[]" value="Array field 2")
+        input(type="hidden" name="duplicate_field" value="Duplicate field 1")
+        input(type="hidden" name="duplicate_field" value="Duplicate field 2")
+        input(type="hidden" name="field.with.dot" value="Field with dot")
+        input(type="hidden" name="field-with-dash" value="Field with dash")
+        input(type="hidden" name="field&with&dash" value="Field with ampersand")
+        button(type="submit") Get
+
+    form(action="/" method="post")
+        input(type="hidden" name="basic_field_1" value="Basic field 1")
+        input(type="hidden" name="basic_field_2" value="Basic field 2")
+        input(type="hidden" name="array_field[]" value="Array field 1")
+        input(type="hidden" name="array_field[]" value="Array field 2")
+        input(type="hidden" name="duplicate_field" value="Duplicate field 1")
+        input(type="hidden" name="duplicate_field" value="Duplicate field 2")
+        input(type="hidden" name="field.with.dot" value="Field with dot")
+        input(type="hidden" name="field-with-dash" value="Field with dash")
+        input(type="hidden" name="field&with&dash" value="Field with ampersand")
+        button(type="submit") Post
+
+    form(action="/" method="post" enctype="multipart/form-data")
+        input(type="hidden" name="basic_field_1" value="Basic field 1")
+        input(type="hidden" name="basic_field_2" value="Basic field 2")
+        input(type="hidden" name="array_field[]" value="Array field 1")
+        input(type="hidden" name="array_field[]" value="Array field 2")
+        input(type="hidden" name="duplicate_field" value="Duplicate field 1")
+        input(type="hidden" name="duplicate_field" value="Duplicate field 2")
+        input(type="hidden" name="field.with.dot" value="Field with dot")
+        input(type="hidden" name="field-with-dash" value="Field with dash")
+        input(type="hidden" name="field&with&dash" value="Field with ampersand")
+        button(type="submit") Multipart

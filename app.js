@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.all('/', (req, res) => {
 	let request = new requests(req);
-	req.is('json') ? res.send({request}) : res.render('index', {request});
+	req.is('application/json') ? res.send({request}) : res.render('index', {request});
 });
 
 app.post('/save', (req, res) => {
@@ -32,7 +32,11 @@ app.post('/save', (req, res) => {
 app.get('/saved/:hash', (req, res, next) => {
 	let file = fs.readFileSync('./cached/' + req.params.hash);
 	let request = JSON.parse(file);
-	req.is('json') ? res.send({request}) : res.render('index', {request});
+	req.is('application/json') ? res.send({request}) : res.render('index', {request});
+});
+
+app.get('/test', (req, res) => {
+  res.render('test');
 });
 
 module.exports = app;
