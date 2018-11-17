@@ -18,12 +18,12 @@ block primary
 					tbody
 						each param in request.getParams()
 							tr
-								th= param.name
+								th.name= param.name
 									small= param.type
 								if typeof param.value == 'string'
-									td.type-single= param.value
+									td.value.type-single= param.value
 								else
-									td.type-multi
+									td.value.type-multi
 										table
 											each val,key in param.value
 												tr
