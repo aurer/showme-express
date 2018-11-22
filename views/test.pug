@@ -11,6 +11,7 @@ block primary
         input(type="hidden" name="field.with.dot" value="Field with dot")
         input(type="hidden" name="field-with-dash" value="Field with dash")
         input(type="hidden" name="field&with&dash" value="Field with ampersand")
+        input(type="hidden" name="field\"name" value="Field with ampersand")
         button(type="submit") Get
 
     form(action="/" method="post")
@@ -35,4 +36,5 @@ block primary
         input(type="hidden" name="field.with.dot" value="Field with dot")
         input(type="hidden" name="field-with-dash" value="Field with dash")
         input(type="hidden" name="field&with&dash" value="Field with ampersand")
+        input(type="file" name="the__file")
         button(type="submit") Multipart

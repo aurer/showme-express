@@ -1,16 +1,13 @@
 const express = require('express');
 const multer = require('multer');
-const bodyParser = require('body-parser');
 const path = require('path');
 const requests = require('./lib/requests');
 const fs = require('fs');
 
 const app = express();
-const upload = multer({dest: 'uploads', fileFilter: (req, file, cb) => cb(null, false)});
+const upload = multer();
 
 app.use(upload.any());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded());
 
