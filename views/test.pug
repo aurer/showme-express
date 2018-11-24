@@ -38,3 +38,8 @@ block primary
         input(type="hidden" name="field&with&dash" value="Field with ampersand")
         input(type="file" name="the__file")
         button(type="submit") Multipart
+
+    form(action="/save" method="post")
+        input(type="hidden" name="serialised" value='{"params":[{"type":"get","name":"Something","value":"Like this..."}],"referer":"http://localhost:3000/","formAction":null}')
+        input(type="hidden" name="hash" value="997a2c709b84f78c1ae744ec153ef6e2")
+        button(type="submit") Bad save

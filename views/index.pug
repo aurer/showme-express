@@ -1,14 +1,17 @@
 extends layout/default
 
 block primary
-	if request.getParams().length
+	if requestor.params.length
 		section.main
 			header
 				h1 Showme
-				if request.getReferer()
+				if (requestor.referer && !requestor.isCache())
 					div.referer
 						b Referer:
-						span= request.getReferer()
+						span= requestor.referer
+				if requestor.isCache()
+					div.notice
+						b Saved request
 			main
 				table
 					thead
@@ -16,7 +19,7 @@ block primary
 							th Name
 							th Value
 					tbody
-						each param in request.getParams()
+						each param in requestor.params
 							tr
 								th.name= param.name
 									small= param.type
@@ -29,17 +32,17 @@ block primary
 												tr
 													th= key
 													td= val
-					if request.action
+					if requestor.formAction
 						tfoot
-							tr
+							tr.action
 								td Form action
 								td
-									a(target="_blank" href=request.action)= request.action
+									a(target="_blank" href=requestor.formAction)= requestor.formAction
 			footer
-				if !request.isCache()
+				if !requestor.isCache()
 					form(action="/save" enctype="multipart/form-data" method="post")
-						input(type="hidden" name="serialised" value=request.getSerlialised())
-						input(type="hidden" name="hash" value=request.getHash(request.getSerlialised()))
+						input(type="hidden" name="serialised" value=requestor.getSerialised())
+						input(type="hidden" name="hash" value=requestor.getHash())
 						button(type="submit") Share
 				a(href="https://aurer.co.uk" target="_blank") &copy;aurer #{new Date().getFullYear()}
 				a(href="https://github.com/aurer/showme" target="_blank") Github
