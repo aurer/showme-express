@@ -1,7 +1,7 @@
 const app = require('../app');
 const chai = require('chai');
 const expect = chai.expect;
-const { getResponse, validateResponseValues } = require('../lib/testHelpers');
+const { validateResponseValues } = require('../lib/testHelpers');
 
 describe('GET', function() {
   this.timeout(10000);
