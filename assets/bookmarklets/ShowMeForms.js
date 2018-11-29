@@ -8,10 +8,10 @@ function make(form) {
 		if (form.getAttribute('action')) {
 			var querystring = form.getAttribute('action').split('?')[1] || null;
 			form.setAttribute('data-prev-action', form.getAttribute('action'));
-			form.action='https://showme.aurer.co.uk' + (querystring ? '?' + querystring : '');
+			form.action='https://showme.aurer.co' + (querystring ? '?' + querystring : '');
 		} else {
 			form.setAttribute('data-prev-action', window.location.origin + window.location.pathname);
-			form.action='https://showme.aurer.co.uk' + (window.location.search ? '?' + window.location.search : '');
+			form.action='https://showme.aurer.co' + (window.location.search ? '?' + window.location.search : '');
 		}
 		form.target = '_blank';
 		form.style.outline = '1px solid #75d5ff';

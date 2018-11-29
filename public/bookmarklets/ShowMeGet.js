@@ -1,1 +1,1 @@
-javascript:(function(){window.open("https://showme.aurer.co.uk"+window.location.search);})();
+javascript:(function(){window.open("https://showme.aurer.co"+window.location.search);})();

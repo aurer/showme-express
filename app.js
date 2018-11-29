@@ -14,17 +14,37 @@ app.use(express.urlencoded());
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.all('/', (req, res, next) => {
+function getScript(name) {
+	const filePath = path.join(__dirname, 'public', 'bookmarklets', name);
+	return new Promise((resolve, reject) =>{
+		fs.exists(filePath, (result) => {
+			fs.readFile(filePath, {encoding: 'utf-8'}, (err, data) => {
+				if (err) {
+					reject(err);
+				}
+				resolve(data.toString());
+			})
+		})
+	})
+}
+
+app.all('/', async (req, res, next) => {
 	try {
 		let requestor = new Requestor().fromRequest(req);
-		res.render('index', {requestor});
+		if (requestor.params.length) {
+			res.render('index', {requestor});
+		} else {
+			let showmeGetScript = await getScript('ShowMeGet.js')
+			let showmeFormsScript = await getScript('ShowMeForms.js')
+			res.render('index', {requestor, showmeGetScript, showmeFormsScript});
+		}
 	} catch(err) {
 		next(err);
 	}
 });
 
 app.post('/save', (req, res, next) => {
-	try {	
+	try {
 		let hash = req.body.hash;
 		let serialised = req.body.serialised;
 		let resultingHash = Requestor.saveRequest('./cached', hash, serialised);
@@ -38,7 +58,7 @@ app.post('/save', (req, res, next) => {
 });
 
 app.get('/saved/:hash', (req, res, next) => {
-	try {		
+	try {
 		if (fs.existsSync('./cached/' + req.params.hash)) {
 			let file = fs.readFileSync('./cached/' + req.params.hash);
 			let serialised = JSON.parse(file);

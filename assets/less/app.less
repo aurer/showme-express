@@ -37,9 +37,6 @@ a {
 	top: 40%;
 	transform: translateY(-50%);
 	text-align: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	color: @color-primary-lightest;
 
 	h1 {
@@ -54,6 +51,27 @@ a {
 
 	a {
 		color: @color-secondary-light;
+	}
+
+	form {
+		display: inline-block;
+		width: auto;
+	}
+
+	.bookmarklet {
+		display: inline-block;
+		margin: .5em;
+		padding: .3em .5em;
+		line-height: 1;
+		background-color: @color-primary-lightest;
+		color: @color-primary;
+		border-radius: .3em;
+		font-weight: bold;
+		box-shadow: 0 1px 8px fade(@color-primary-darker, 80%);
+
+		&:hover, &:focus {
+			background-color: @color-secondary-light;
+		}
 	}
 }
 

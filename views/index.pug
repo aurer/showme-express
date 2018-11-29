@@ -49,10 +49,13 @@ block primary
 	else
 		section.intro
 			h1 Showme
-			p
-				Send a POST or 
+			p Direct a POST or 
 				a(href="?Something=Like+this...") GET
 				|  request here to inspect it's values.
-			p
-				a(href="https://github.com/aurer/showme/tree/master/assets/dist/bookmarklets" target="_blank") These bookmarklets
-				|  might help.
+			if showmeGetScript && showmeFormsScript
+				p Add these bookmarklets by dragging them to your bookmarks:
+				p
+					if showmeFormsScript
+						a.bookmarklet(href=showmeFormsScript) Showme Forms
+					if showmeGetScript
+						a.bookmarklet(href=showmeGetScript) Showme Get

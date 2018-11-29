@@ -34,9 +34,6 @@ a:focus {
   top: 40%;
   transform: translateY(-50%);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: #88a3c5;
 }
 .intro h1 {
@@ -49,6 +46,25 @@ a:focus {
 }
 .intro a {
   color: #e3efff;
+}
+.intro form {
+  display: inline-block;
+  width: auto;
+}
+.intro .bookmarklet {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.3em 0.5em;
+  line-height: 1;
+  background-color: #88a3c5;
+  color: #1c2e44;
+  border-radius: 0.3em;
+  font-weight: bold;
+  box-shadow: 0 1px 8px rgba(17, 26, 35, 0.8);
+}
+.intro .bookmarklet:hover,
+.intro .bookmarklet:focus {
+  background-color: #e3efff;
 }
 .main {
   width: 100%;

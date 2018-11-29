@@ -19,6 +19,7 @@ gulp.task('less', function() {
 		.pipe(server.stream());
 });
 
+// Compile javascrip
 gulp.task('js', function() {
 	gulp.src([`${src}/js/main.js`])
 		.pipe(plumber())
@@ -27,6 +28,7 @@ gulp.task('js', function() {
 		.pipe(server.stream());
 });
 
+// Compile bookmarklets
 gulp.task('bookmarklets', function() {
 	gulp.src([`${src}/bookmarklets/*`])
 		.pipe(plumber())
