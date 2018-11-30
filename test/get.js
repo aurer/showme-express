@@ -1,7 +1,7 @@
 const app = require('../app');
 const chai = require('chai');
 const expect = chai.expect;
-const { validateResponseValues } = require('../lib/testHelpers');
+const { getResponse, elementText, validateResponseValues } = require('../lib/testHelpers');
 
 describe('GET', function() {
   this.timeout(10000);
@@ -38,4 +38,15 @@ describe('GET', function() {
   it('works with fieldnames with special characters', done => {
     validateResponseValues('get', {'!@£$%^&*()': '!@£$%^&*()'}, done);
   });
+
+  it('orders fields alphabetically', done => {
+    let letters = ['1', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    getResponse('get', {g:'g', b:'b', a:'a', h:'h', e:'e', d:'d', f:'f', c:'c', '1':'1'}).end((err, res) => {
+      letters.forEach((letter, i) => {
+        expect(elementText(res.text, `tr:nth-of-type(${i+1}) .name`)).to.equal(letter + 'get');
+        expect(elementText(res.text, `tr:nth-of-type(${i+1}) .value`)).to.equal(letter);
+      })
+      done(err);
+    })
+  })
 });
