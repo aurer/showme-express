@@ -9,7 +9,7 @@ describe('Mutipart', function() {
 
   it('reads multipart requests', done => {
     request().get('/').field('field1', 'field1').end((err, res) => {
-      expect(elementText(res.text, "th.name")).to.equal('field1post');
+      expect(elementText(res.text, "th.name")).to.equal('field1:');
       expect(elementText(res.text, "td.value")).to.equal('field1');
       done(err);
     });
