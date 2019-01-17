@@ -205,6 +205,18 @@ tbody th {
   }
 }
 tbody th small {
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+tbody th:after {
+  content: attr(data-type);
+  display: inline-block;
+  font-size: 0.8em;
   position: absolute;
   top: 0.8em;
   right: 1em;

@@ -21,8 +21,8 @@ block primary
 					tbody
 						each param in requestor.params
 							tr
-								th.name= param.name
-									small= param.type
+								th.name(data-type=param.type)= param.name
+									small :
 								if typeof param.value == 'string'
 									td.value.type-single= param.value
 								else
@@ -30,7 +30,10 @@ block primary
 										table
 											each val,key in param.value
 												tr
-													th= key
+													th
+														small &nbsp;&nbsp;#{param.name}[
+														| #{key}
+														small ]:
 													td= val
 					if requestor.formAction
 						tfoot

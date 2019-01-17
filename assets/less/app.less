@@ -225,6 +225,19 @@ tbody {
 		}
 
 		small {
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+		}
+
+		&:after {
+			content: attr(data-type);
+			display: inline-block;
+			font-size: .8em;
 			position: absolute;
 			top: .8em;
 			right: 1em;
