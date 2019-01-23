@@ -15,7 +15,7 @@ body {
 }
 @media screen and (max-width: 30em) {
   body {
-    padding: 0.5rem;
+    padding: 0;
   }
 }
 a {
@@ -88,6 +88,8 @@ a:focus {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  position: relative;
+  padding-right: 4em;
 }
 @media screen and (max-width: 30em) {
   .main header {
@@ -107,6 +109,34 @@ a:focus {
   opacity: 0.5;
   font-weight: normal;
   text-transform: uppercase;
+}
+.main header .viewMode {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: transparent;
+  color: #fff;
+  padding: 3px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+@media screen and (max-width: 30em) {
+  .main header .viewMode {
+    display: none;
+  }
+}
+.main header .viewMode:hover {
+  background-color: #338cff;
+}
+.main header .viewMode svg {
+  fill: currentColor;
 }
 .main main {
   padding: 2rem 2rem 0.5rem;
@@ -256,4 +286,18 @@ tbody td table th {
     width: auto;
     max-width: 50%;
   }
+}
+body.is-expanded {
+  padding: 0;
+}
+body.is-expanded .main {
+  max-width: none;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+body.is-expanded .main header {
+  border-radius: 0;
 }

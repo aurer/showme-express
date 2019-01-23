@@ -12,6 +12,10 @@ block primary
 				if requestor.isCache()
 					div.notice
 						b Saved request
+				button.viewMode#viewMode
+					svg(width="28" height="28")
+						title View mode
+						use(xlink:href="/gfx/symbol-defs.svg#icon-expand")
 			main
 				table
 					thead
@@ -21,8 +25,8 @@ block primary
 					tbody
 						each param in requestor.params
 							tr
-								th.name(data-type=param.type)= param.name
-									small :
+								th.name(data-type=param.method, data-format=typeof param.value)= param.name
+									small &nbsp;=
 								if typeof param.value == 'string'
 									td.value.type-single= param.value
 								else
@@ -33,7 +37,7 @@ block primary
 													th
 														small &nbsp;&nbsp;#{param.name}[
 														| #{key}
-														small ]:
+														small ] &nbsp;=
 													td= val
 					if requestor.formAction
 						tfoot

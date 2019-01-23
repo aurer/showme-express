@@ -16,7 +16,7 @@ body {
   margin: 0;
 
 	@media @mq-sm {
-		padding: .5rem;
+		padding: 0;
 	}
 }
 
@@ -97,6 +97,8 @@ a {
 		display: flex;
 		flex-flow: row wrap;
 		align-items: center;
+		position: relative;
+		padding-right: 4em;
 
 		@media @mq-sm {
 			padding: .5rem 1rem;
@@ -115,6 +117,36 @@ a {
 				opacity: .5;
 				font-weight: normal;
 				text-transform: uppercase;
+			}
+		}
+
+		.viewMode {
+			position: absolute;
+			top: 1em;
+			right: 1em;
+			display: inline-block;
+			vertical-align: middle;
+			background-color: transparent;
+			color: #fff;
+			padding: 3px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			width: 34px;
+			height: 34px;
+			border-radius: 20px;
+			transition: background-color .2s;
+
+			@media @mq-sm {
+				display: none;
+			}
+		
+			&:hover {
+				background-color: lighten(@color-secondary, 10%);
+			}
+		
+			svg {
+				fill: currentColor;
 			}
 		}
 	}
@@ -279,6 +311,23 @@ tbody {
 					max-width: 50%;
 				}
 			}
+		}
+	}
+}
+
+body.is-expanded {
+	padding: 0;
+
+	.main {
+		max-width: none;
+		border-radius: 0;
+		box-shadow: none;
+		min-height: 100vh;
+		margin: 0;
+		box-sizing: border-box;
+
+		header {
+			border-radius: 0;
 		}
 	}
 }

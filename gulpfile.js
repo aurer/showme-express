@@ -28,6 +28,12 @@ gulp.task('js', function() {
 		.pipe(server.stream());
 });
 
+// Copy graphics
+gulp.task('gfx', function() {
+	gulp.src(`${src}/gfx/*`)
+		.pipe(gulp.dest(`${dist}/gfx`))
+})
+
 // Compile bookmarklets
 gulp.task('bookmarklets', function() {
 	gulp.src([`${src}/bookmarklets/*`])
@@ -42,6 +48,7 @@ gulp.task('bookmarklets', function() {
 gulp.task('watch', function() {
 	gulp.watch(`${src}/js/**/*.js`, ['js']);
 	gulp.watch(`${src}/less/**/*.less`, ['less']);
+	gulp.watch(`${src}/gfx/*`, ['gfx']);
 	gulp.watch(`${src}/bookmarklets/*.js`, ['bookmarklets']);
 });
 
@@ -53,5 +60,5 @@ gulp.task('serve', function() {
 	});
 });
 
-gulp.task('default', ['less', 'bookmarklets']);
+gulp.task('default', ['less', 'js', 'gfx', 'bookmarklets']);
 gulp.task('dev', ['default', 'watch', 'serve']);
