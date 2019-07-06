@@ -26,7 +26,7 @@ block primary
 						each param in requestor.params
 							tr
 								th.name(data-type=param.method, data-format=typeof param.value)= param.name
-									small &nbsp;=
+									small :
 								if typeof param.value == 'string'
 									td.value.type-single= param.value
 								else
