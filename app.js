@@ -9,7 +9,7 @@ const upload = multer();
 
 app.use(upload.any());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
