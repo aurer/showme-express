@@ -7,7 +7,7 @@ body {
   line-height: 1.4;
 }
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   background-color: #374c68;
   color: #88a3c5;
   padding: 2rem 1rem 0;
@@ -19,7 +19,7 @@ body {
   }
 }
 a {
-  color: #006FFF;
+  color: #006fff;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -43,7 +43,7 @@ a:focus {
 .intro h1 {
   font-size: 2.5em;
   margin: 0 0 0.8rem;
-  color: #006FFF;
+  color: #006fff;
 }
 .intro p {
   margin: 0 0 1rem;
@@ -79,9 +79,12 @@ a:focus {
   box-shadow: 0 17px 35px -10px rgba(17, 26, 35, 0.5);
   border-radius: 4px;
 }
+.main.is-saved header {
+  background-color: #1c2e44;
+}
 .main header {
   padding: 1rem 2rem;
-  background-color: #006FFF;
+  background-color: #006fff;
   color: #fff;
   border-radius: 4px 4px 0 0;
   font-size: 0.9rem;
@@ -160,7 +163,7 @@ a:focus {
   color: #88a3c5;
 }
 .main footer a:after {
-  content: "\2022";
+  content: '\2022';
   display: inline-block;
   margin-left: 0.6em;
 }
@@ -172,7 +175,7 @@ a:focus {
   padding-right: 0.3em;
 }
 .main footer form:after {
-  content: "\2022";
+  content: '\2022';
   display: inline-block;
   margin-left: 0.6em;
 }
@@ -190,7 +193,7 @@ a:focus {
 table {
   border-collapse: collapse;
   width: 100%;
-  font-family: "Inconsolata", monospace;
+  font-family: 'Inconsolata', monospace;
 }
 thead th,
 tfoot th,

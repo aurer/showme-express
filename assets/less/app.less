@@ -1,6 +1,8 @@
 @import 'config';
 
-* { box-sizing: border-box }
+* {
+	box-sizing: border-box;
+}
 
 html,
 body {
@@ -9,11 +11,11 @@ body {
 }
 
 body {
-	font-family: "Ubuntu", sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	background-color: @color-primary-lighter;
 	color: @color-primary-lightest;
-  padding: 2rem 1rem 0;
-  margin: 0;
+	padding: 2rem 1rem 0;
+	margin: 0;
 
 	@media @mq-sm {
 		padding: 0;
@@ -23,9 +25,10 @@ body {
 a {
 	color: @color-secondary;
 	text-decoration: none;
-	transition: color .2s;
+	transition: color 0.2s;
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		color: lighten(@color-secondary, 20%);
 	}
 }
@@ -45,7 +48,7 @@ a {
 
 	h1 {
 		font-size: 2.5em;
-		margin: 0 0 .8rem;
+		margin: 0 0 0.8rem;
 		color: @color-secondary;
 	}
 
@@ -64,16 +67,17 @@ a {
 
 	.bookmarklet {
 		display: inline-block;
-		margin: .5em;
-		padding: .3em .5em;
+		margin: 0.5em;
+		padding: 0.3em 0.5em;
 		line-height: 1;
 		background-color: @color-primary-lightest;
 		color: @color-primary;
-		border-radius: .3em;
+		border-radius: 0.3em;
 		font-weight: bold;
 		box-shadow: 0 1px 8px fade(@color-primary-darker, 80%);
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			background-color: @color-secondary-light;
 		}
 	}
@@ -88,12 +92,16 @@ a {
 	box-shadow: 0 17px 35px -10px fade(@color-primary-darker, 50%);
 	border-radius: 4px;
 
+	&.is-saved header {
+		background-color: @color-primary;
+	}
+
 	header {
 		padding: 1rem 2rem;
 		background-color: @color-secondary;
 		color: #fff;
 		border-radius: 4px 4px 0 0;
-		font-size: .9rem;
+		font-size: 0.9rem;
 		display: flex;
 		flex-flow: row wrap;
 		align-items: center;
@@ -101,7 +109,7 @@ a {
 		padding-right: 4em;
 
 		@media @mq-sm {
-			padding: .5rem 1rem;
+			padding: 0.5rem 1rem;
 		}
 
 		h1 {
@@ -114,7 +122,7 @@ a {
 		.referer {
 			font-family: 'Inconsolata', monospace;
 			b {
-				opacity: .5;
+				opacity: 0.5;
 				font-weight: normal;
 				text-transform: uppercase;
 			}
@@ -135,16 +143,16 @@ a {
 			width: 34px;
 			height: 34px;
 			border-radius: 20px;
-			transition: background-color .2s;
+			transition: background-color 0.2s;
 
 			@media @mq-sm {
 				display: none;
 			}
-		
+
 			&:hover {
 				background-color: lighten(@color-secondary, 10%);
 			}
-		
+
 			svg {
 				fill: currentColor;
 			}
@@ -152,31 +160,31 @@ a {
 	}
 
 	main {
-		padding: 2rem 2rem .5rem;
+		padding: 2rem 2rem 0.5rem;
 
 		@media @mq-sm {
-			padding: 1rem 1rem .5rem;
+			padding: 1rem 1rem 0.5rem;
 		}
 	}
 
 	footer {
-		font-size: .8em;
-		padding: 0 2rem .5rem;
+		font-size: 0.8em;
+		padding: 0 2rem 0.5rem;
 		text-align: right;
 		color: fade(@color-primary-lightest, 50%);
 
 		a {
 			color: currentColor;
-			padding: 0 .3em;
+			padding: 0 0.3em;
 
 			&:hover {
 				color: @color-primary-lightest;
 			}
 
 			&:after {
-				content: "\2022";
+				content: '\2022';
 				display: inline-block;
-				margin-left: .6em;
+				margin-left: 0.6em;
 			}
 
 			&:last-child:after {
@@ -186,12 +194,12 @@ a {
 
 		form {
 			display: inline-block;
-			padding-right: .3em;
+			padding-right: 0.3em;
 
 			&:after {
-				content: "\2022";
+				content: '\2022';
 				display: inline-block;
-				margin-left: .6em;
+				margin-left: 0.6em;
 			}
 		}
 
@@ -200,7 +208,7 @@ a {
 			border: none;
 			color: inherit;
 			padding: 0;
-			transition: color .2s;
+			transition: color 0.2s;
 
 			&:hover {
 				color: @color-primary-lightest;
@@ -213,14 +221,15 @@ a {
 table {
 	border-collapse: collapse;
 	width: 100%;
-	font-family: "Inconsolata", monospace;
+	font-family: 'Inconsolata', monospace;
 }
 
 thead,
 tfoot {
-	th, td {
+	th,
+	td {
 		text-align: left;
-		padding: .3rem 1rem;
+		padding: 0.3rem 1rem;
 		border: 1px solid @color-primary-light;
 		color: darken(@color-primary-lightest, 25%);
 	}
@@ -230,17 +239,17 @@ tfoot {
 	}
 }
 
-
 tbody {
-	th, td {
-		padding: .5rem 1rem;
+	th,
+	td {
+		padding: 0.5rem 1rem;
 		border: 1px solid @color-primary-light;
 		text-align: left;
 		vertical-align: top;
 
 		@media @mq-sm {
-			padding: .3rem .5rem;
-			font-size: .9em;
+			padding: 0.3rem 0.5rem;
+			font-size: 0.9em;
 			display: block;
 		}
 	}
@@ -269,9 +278,9 @@ tbody {
 		&:after {
 			content: attr(data-type);
 			display: inline-block;
-			font-size: .8em;
+			font-size: 0.8em;
 			position: absolute;
-			top: .8em;
+			top: 0.8em;
 			right: 1em;
 			width: 4em;
 			text-align: right;
@@ -297,7 +306,8 @@ tbody {
 			border-style: hidden;
 
 			@media @mq-sm {
-				th, td {
+				th,
+				td {
 					display: table-cell;
 				}
 			}
