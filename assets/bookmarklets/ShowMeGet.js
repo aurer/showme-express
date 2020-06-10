@@ -1,1 +1,1 @@
-window.open('https://showme.aurer.co' + window.location.search);
+window.open('https://showme.aurer.dev' + window.location.search);
