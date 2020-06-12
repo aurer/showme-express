@@ -10,7 +10,7 @@ const {
 	validateResponseValues,
 } = require('../lib/testHelpers');
 
-describe('Referer', function () {
+describe('Integration', function () {
 	this.timeout(10000);
 	this.slow(10000);
 
@@ -47,11 +47,6 @@ describe('Referer', function () {
 				done(err);
 			});
 	});
-});
-
-describe('Share link exists', function () {
-	this.timeout(10000);
-	this.slow(10000);
 
 	it('exists', (done) => {
 		request()
@@ -97,7 +92,7 @@ describe('Share link exists', function () {
 				expect(elementText(res.text, 'tbody > tr:nth-child(1) > td')).to.equal('value1');
 				expect(elementText(res.text, 'tbody > tr:nth-child(2) > th')).to.equal('field2:');
 				expect(elementText(res.text, 'tbody > tr:nth-child(2) > td')).to.equal('value2');
-				expect(elementText(res.text, 'header .notice')).to.equal('Saved request');
+				expect(elementText(res.text, '.notice')).to.equal('Saved request');
 				done(err);
 			});
 	});
