@@ -84,4 +84,21 @@ describe('Share link exists', function () {
 				done(err);
 			});
 	});
+
+	it('saves a form correctly', (done) => {
+		request()
+			.post('/save')
+			.field(
+				'serialised',
+				'{"params":[{"method":"get","name":"field1","value":"value1"},{"method":"get","name":"field2","value":"value2"}],"formAction":null}'
+			)
+			.end((err, res) => {
+				expect(elementText(res.text, 'tbody > tr:nth-child(1) > th')).to.equal('field1:');
+				expect(elementText(res.text, 'tbody > tr:nth-child(1) > td')).to.equal('value1');
+				expect(elementText(res.text, 'tbody > tr:nth-child(2) > th')).to.equal('field2:');
+				expect(elementText(res.text, 'tbody > tr:nth-child(2) > td')).to.equal('value2');
+				expect(elementText(res.text, 'header .notice')).to.equal('Saved request');
+				done(err);
+			});
+	});
 });
