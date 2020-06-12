@@ -9,14 +9,14 @@
 		"test": "mocha"
 	},
 	"dependencies": {
-		"chai-http": "^4.2.0",
 		"express": "^4.17.1",
 		"filesize": "^3.6.1",
-		"jsdom": "^13.0.0",
 		"multer": "^1.4.1",
 		"pug": "^2.0.3"
 	},
 	"devDependencies": {
+		"jsdom": "^13.0.0",
+		"chai-http": "^4.2.0",
 		"browser-sync": "^2.26.7",
 		"chai": "^4.2.0",
 		"gulp": "^4.0.2",
