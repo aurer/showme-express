@@ -1,9 +1,9 @@
 header
 	h1 Showme
-	if (requestor.referer && !requestor.isCache())
+	if (requestor.referer && !isSaved)
 		div.referer
 			b Referer:
 			span= requestor.referer
-	if requestor.isCache()
+	if isSaved
 		div.notice
 			b Saved request

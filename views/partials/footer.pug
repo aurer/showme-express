@@ -1,8 +1,7 @@
 footer
-	if !requestor.isCache()
+	if !isSaved
 		form(action="/save" enctype="multipart/form-data" method="post")
 			input(type="hidden" name="serialised" value=requestor.getSerialised())
-			input(type="hidden" name="hash" value=requestor.getHash())
 			button(type="submit") Save
 	a(href="https://philmaurer.dev" target="_blank") &copy;Phil Maurer #{new Date().getFullYear()}
 	a(href="https://github.com/aurer/showme-express" target="_blank") Github

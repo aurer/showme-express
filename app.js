@@ -3,13 +3,15 @@ const multer = require('multer');
 const path = require('path');
 const Requestor = require('./lib/requestor');
 const fs = require('fs');
+const FileSaver = require('./lib/fileSaver');
 
 const app = express();
 const upload = multer();
+const fileSaver = FileSaver(path.join(__dirname, 'cached'));
 
 app.use(upload.any());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -17,76 +19,68 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 function getScript(name) {
 	const filePath = path.join(__dirname, 'public', 'bookmarklets', name);
-	return new Promise((resolve, reject) =>{
+	return new Promise((resolve, reject) => {
 		fs.exists(filePath, (result) => {
-			fs.readFile(filePath, {encoding: 'utf-8'}, (err, data) => {
+			fs.readFile(filePath, { encoding: 'utf-8' }, (err, data) => {
 				if (err) {
 					reject(err);
 				}
 				resolve(data.toString());
-			})
-		})
-	})
+			});
+		});
+	});
 }
 
 app.all('/', async (req, res, next) => {
-	try {
-		let requestor = new Requestor().fromRequest(req);
-		if (requestor.params.length) {
-			res.render('index', {requestor});
-		} else {
-			let showmeGetScript = await getScript('ShowMeGet.js')
-			let showmeFormsScript = await getScript('ShowMeForms.js')
-			res.render('index', {requestor, showmeGetScript, showmeFormsScript});
-		}
-	} catch(err) {
-		next(err);
+	let requestor = new Requestor().fromRequest(req);
+
+	if (!requestor.params.length) {
+		let showmeGetScript = await getScript('ShowMeGet.js');
+		let showmeFormsScript = await getScript('ShowMeForms.js');
+		return res.render('index', { showmeGetScript, showmeFormsScript });
 	}
+
+	return res.render('results', { requestor });
 });
 
 app.post('/save', (req, res, next) => {
 	try {
-		let hash = req.body.hash;
-		let serialised = req.body.serialised;
-		let resultingHash = Requestor.saveRequest('./cached', hash, serialised);
-		if (resultingHash) {
-			return res.redirect('/saved/' + resultingHash)
-		}
+		const serialised = req.body.serialised;
+		const key = fileSaver.save(serialised);
+		res.redirect('/saved/' + key);
+	} catch (err) {
+		console.error(err);
 		res.redirect('/');
-	} catch(err) {
-		next(err);
 	}
 });
 
-app.get('/saved/:hash', (req, res, next) => {
+app.get('/saved/:hash', async (req, res, next) => {
 	try {
-		if (fs.existsSync('./cached/' + req.params.hash)) {
-			let file = fs.readFileSync('./cached/' + req.params.hash);
-			let serialised = JSON.parse(file);
-			let requestor = new Requestor().fromSerialised(req, serialised);
-			res.render('index', {requestor});
-		} else {
-			res.render('error', {title:'Request expired', message: 'The saved request you are after has expired.'});
+		const saved = await fileSaver.load(req.params.hash);
+		if (saved) {
+			let requestor = new Requestor().fromSerialised(req, JSON.parse(saved));
+			return res.render('results', { requestor, isSaved: true });
 		}
-	} catch(err) {
+		res.render('error', { title: 'Request expired', message: 'The saved request you are after has expired.' });
+	} catch (err) {
 		next(err);
 	}
 });
 
 app.get('/test', (req, res) => {
-  res.render('test');
+	res.render('test');
 });
 
 // 404 error handler
 app.use((req, res) => {
-	res.render('error', {title: '404', message: 'Page not found'})
+	res.render('error', { title: '404', message: 'Page not found' });
 });
 
 // Proper error handler
 app.use((err, req, res, next) => {
-  console.error(err.stack)
-	res.status(500)
-	res.render('error', {title: '500', message: err})
-})
+	console.error(err.stack);
+	res.status(500);
+	res.render('error', { title: '500', message: err });
+});
 
 module.exports = app;

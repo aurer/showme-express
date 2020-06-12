@@ -73,16 +73,6 @@ describe('Share link exists', function () {
 			});
 	});
 
-	it('Hash has a value', (done) => {
-		request()
-			.get('/')
-			.field('field1', 'field1')
-			.end((err, res) => {
-				expect(element(res.text, 'footer [name=hash]').value).to.not.be.empty;
-				done(err);
-			});
-	});
-
 	it('shows form action', (done) => {
 		request()
 			.get('/')

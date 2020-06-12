@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "gulp dev",
-		"start": "node index.js",
+		"start": "nodemon index.js",
 		"test": "mocha"
 	},
 	"dependencies": {
@@ -24,6 +24,7 @@
 		"gulp-less": "^4.0.1",
 		"gulp-plumber": "^1.2.0",
 		"gulp-uglify": "^3.0.1",
-		"mocha": "^5.2.0"
+		"mocha": "^5.2.0",
+		"rimraf": "^3.0.2"
 	}
 }
