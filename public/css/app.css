@@ -8,9 +8,9 @@ body {
 }
 body {
   font-family: 'Ubuntu', sans-serif;
-  background-color: #374c68;
-  color: #88a3c5;
-  padding: 2rem 1rem 0;
+  background-color: #172431;
+  color: #a8c2e3;
+  padding: 0;
   margin: 0;
 }
 @media screen and (max-width: 30em) {
@@ -27,18 +27,38 @@ a:hover,
 a:focus {
   color: #66a9ff;
 }
+.button {
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: #006fff;
+  color: #fff;
+  text-align: center;
+  min-width: 8rem;
+}
+.button:hover,
+.button:focus {
+  background-color: #318aff;
+}
+.buttonGroup {
+  display: flex;
+  margin-left: -1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.buttonGroup > * {
+  margin-left: 1rem;
+}
 .intro {
-  width: 30em;
+  width: 40em;
   margin: auto;
   position: relative;
   top: 40%;
   transform: translateY(-50%);
   text-align: center;
-  color: #88a3c5;
-  background-color: #172431;
   padding: 1em;
   border-radius: 4px;
-  box-shadow: 0 17px 35px -10px rgba(17, 26, 35, 0.5);
 }
 .intro h1 {
   font-size: 2.5em;
@@ -57,14 +77,15 @@ a:focus {
 }
 .intro .bookmarklet {
   display: inline-block;
-  margin: 0.5em;
-  padding: 0.3em 0.5em;
+  padding: 0.5rem 1rem;
   line-height: 1;
-  background-color: #88a3c5;
+  background-color: #a8c2e3;
   color: #1c2e44;
   border-radius: 0.3em;
   font-weight: bold;
   box-shadow: 0 1px 8px rgba(17, 26, 35, 0.8);
+  text-align: center;
+  min-width: 8rem;
 }
 .intro .bookmarklet:hover,
 .intro .bookmarklet:focus {
@@ -75,24 +96,24 @@ a:focus {
   max-width: 90rem;
   margin: 0 auto 2rem;
   background-color: #172431;
-  color: #88a3c5;
-  box-shadow: 0 17px 35px -10px rgba(17, 26, 35, 0.5);
-  border-radius: 4px;
+  color: #a8c2e3;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
 }
 .main.is-saved header {
-  background-color: #1c2e44;
+  background-color: #2b4467;
 }
 .main header {
   padding: 1rem 2rem;
   background-color: #006fff;
   color: #fff;
-  border-radius: 4px 4px 0 0;
   font-size: 0.9rem;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   position: relative;
-  padding-right: 4em;
 }
 @media screen and (max-width: 30em) {
   .main header {
@@ -153,14 +174,14 @@ a:focus {
   font-size: 0.8em;
   padding: 0 2rem 0.5rem;
   text-align: right;
-  color: rgba(136, 163, 197, 0.5);
+  color: rgba(168, 194, 227, 0.5);
 }
 .main footer a {
   color: currentColor;
   padding: 0 0.3em;
 }
 .main footer a:hover {
-  color: #88a3c5;
+  color: #a8c2e3;
 }
 .main footer a:after {
   content: '\2022';
@@ -187,7 +208,7 @@ a:focus {
   transition: color 0.2s;
 }
 .main footer button:hover {
-  color: #88a3c5;
+  color: #a8c2e3;
   cursor: pointer;
 }
 table {
@@ -202,7 +223,7 @@ tfoot td {
   text-align: left;
   padding: 0.3rem 1rem;
   border: 1px solid #2b4467;
-  color: #43638a;
+  color: #487ec4;
 }
 @media screen and (max-width: 30em) {
   thead,
@@ -255,7 +276,7 @@ tbody th:after {
   right: 1em;
   width: 4em;
   text-align: right;
-  color: rgba(136, 163, 197, 0.5);
+  color: rgba(168, 194, 227, 0.5);
 }
 tbody td {
   min-height: 2em;
@@ -289,18 +310,4 @@ tbody td table th {
     width: auto;
     max-width: 50%;
   }
-}
-body.is-expanded {
-  padding: 0;
-}
-body.is-expanded .main {
-  max-width: none;
-  border-radius: 0;
-  box-shadow: none;
-  min-height: 100vh;
-  margin: 0;
-  box-sizing: border-box;
-}
-body.is-expanded .main header {
-  border-radius: 0;
 }

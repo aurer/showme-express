@@ -1,0 +1,7 @@
+extends layout/default
+
+block primary
+	section.main(class=requestor.isCache() && 'is-saved')
+		include partials/header.pug
+		include partials/values.pug
+		include partials/footer.pug

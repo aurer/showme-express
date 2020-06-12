@@ -1,0 +1,29 @@
+main
+	table
+		thead
+			tr
+				th Name
+				th Value
+		tbody
+			each param in requestor.params
+				tr
+					th.name(data-type=param.method, data-format=typeof param.value)= param.name
+						small :
+					if typeof param.value == 'string'
+						td.value.type-single= param.value
+					else
+						td.value.type-multi
+							table
+								each val,key in param.value
+									tr
+										th
+											small &nbsp;&nbsp;#{param.name}[
+											| #{key}
+											small ] &nbsp;=
+										td= val
+		if requestor.formAction
+			tfoot
+				tr.action
+					td Form action
+					td
+						a(target="_blank" href=requestor.formAction)= requestor.formAction
