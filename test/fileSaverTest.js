@@ -2,6 +2,7 @@ const chai = require('chai');
 const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');
+const dateString = require('../lib/dateString');
 
 const expect = chai.expect;
 const FileSaver = require('../lib/fileSaver');
@@ -18,7 +19,8 @@ describe('Filesaver', () => {
 
 	it('can save values', (done) => {
 		const serialisedFormValues = "light=the+walls+on+fire&we'vegot=a+lot+to+say&we+don't+need=words";
-		const hash = '2369092ee4cb289ab46c18156a9377f3';
+		const date = dateString.get();
+		const hash = `${date}-2369092e`;
 		const fileSaver = FileSaver(savePath);
 
 		const saved = fileSaver.save(serialisedFormValues);
@@ -32,7 +34,8 @@ describe('Filesaver', () => {
 
 	it('can return correct value for a key', async function () {
 		const serialisedFormValues = "light=the+walls+on+fire&we'vegot=a+lot+to+say&we+don't+need=words";
-		const key = '2369092ee4cb289ab46c18156a9377f3';
+		const date = dateString.get();
+		const key = `${date}-2369092e`;
 		const fileSaver = FileSaver(savePath);
 
 		const saved = await fileSaver.save(serialisedFormValues, key);
