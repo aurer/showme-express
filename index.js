@@ -1,6 +1,6 @@
-const app = require('./app')
-const config = require('./config.json')
+const app = require('./app');
+require('dotenv').config();
 
-app.listen(config.port, () => {
-	console.log(`App running on port http://localhost:${config.port}`);
+app.listen(process.env.PORT, () => {
+	console.log(`App running on port http://localhost:${process.env.PORT}`);
 });

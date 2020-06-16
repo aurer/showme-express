@@ -10,7 +10,6 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: cp config.json.example config.json
             - run: npm test
 workflows:
   build-and-test:

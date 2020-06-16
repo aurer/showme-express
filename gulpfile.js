@@ -4,7 +4,7 @@ const less = require('gulp-less');
 const uglify = require('gulp-uglify');
 const insert = require('gulp-insert');
 const plumber = require('gulp-plumber');
-const config = require('./config.json');
+require('dotenv').config();
 
 const srcDir = './assets';
 const distDir = './public';
@@ -54,7 +54,7 @@ function watchFiles(cb) {
 // Setup local server with injection
 function serve(cb) {
 	server.init({
-		proxy: 'localhost:' + config.port,
+		proxy: 'localhost:' + process.env.PORT,
 		notify: false,
 	});
 	cb();
