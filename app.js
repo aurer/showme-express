@@ -43,10 +43,10 @@ app.all('/', async (req, res, next) => {
 	return res.render('results', { requestor });
 });
 
-app.post('/save', (req, res, next) => {
+app.post('/save', async (req, res, next) => {
 	try {
 		const serialised = req.body.serialised;
-		const key = fileSaver.save(serialised);
+		const key = await fileSaver.save(serialised);
 		res.redirect('/saved/' + key);
 	} catch (err) {
 		console.error(err);

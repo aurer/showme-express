@@ -17,19 +17,17 @@ describe('Filesaver', () => {
 		done();
 	});
 
-	it('can save values', (done) => {
+	it('can save values', async function () {
 		const serialisedFormValues = "light=the+walls+on+fire&we'vegot=a+lot+to+say&we+don't+need=words";
 		const date = dateString.get();
 		const hash = `${date}-2369092e`;
 		const fileSaver = FileSaver(savePath);
 
-		const saved = fileSaver.save(serialisedFormValues);
+		const saved = await fileSaver.save(serialisedFormValues);
 		expect(saved).to.equal(hash);
 
 		const savedFileContent = fs.readFileSync(path.join(savePath, saved));
 		expect(savedFileContent.toString()).to.equal(serialisedFormValues);
-
-		done();
 	});
 
 	it('can return correct value for a key', async function () {
