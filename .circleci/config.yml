@@ -11,6 +11,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+            - add_ssh_keys
             - run: ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
 workflows:
   build-and-test:
