@@ -13,7 +13,7 @@ jobs:
             - run: npm test
             - add_ssh_keys:
                 fingerprints:
-                  - 'fb:b7:99:5d:89:ae:ff:2e:ea:4f:61:ff:09:fd:f2:99'
+                  - '72:4b:04:64:64:74:16:41:21:96:27:22:c2:b2:8a:e0'
             - run: ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
 workflows:
   build-and-test:
