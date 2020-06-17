@@ -14,6 +14,7 @@ jobs:
             - add_ssh_keys:
                 fingerprints:
                   - '72:4b:04:64:64:74:16:41:21:96:27:22:c2:b2:8a:e0'
+                  - 'SHA256:wdyrAKV/EcfbxCJHAnbqC3DueqgEEmZo3l1H+sFsfk4'
             - run: ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
 workflows:
   build-and-test:
