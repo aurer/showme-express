@@ -11,15 +11,16 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-            - add_ssh_keys:
-                fingerprints:
-                  - '72:4b:04:64:64:74:16:41:21:96:27:22:c2:b2:8a:e0'
-                  - 'SHA256:wdyrAKV/EcfbxCJHAnbqC3DueqgEEmZo3l1H+sFsfk4'
-            - run:
-                name: 'Git pull'
-                command: |
-                  echo '[showme.aurer.dev]:2222 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMFBzFz/kwhK/faa/J6WbIBvpGU3qeto+d8N8xXT8wOB+7WWfJLL0XmRx8vPCY8QYyhZtoVl8+8tdQHcNKEGk/TPomlqB++EDOAz2LIpzMiBTIi5EGUmd2iJjMuHDoJptQBC8fYFuiXPUIc3cqPXy2kjzRIi6d0JFZ/bzj8eAMit/NCXaQiKeA8arzt7TPCOCHskNVZtDAEmRh1Sx1+c4+qz5Zg/ESo3ZET7J+K634QIkMnf8f8jyPVh0IUBp8YW+mocx+PCV2p5r9Uf5Bfh3h7Ief470R3lmsIjFaLUX7gL6kTL0Y6LKOXyVUYjsRZH/keAIJlei8TiD0u8r4uCZT' >> ~/.ssh/known_hosts
-                  ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
+  deploy:
+    executor:
+      name: node/default
+    steps:
+      - add_ssh_keys
+      - run:
+          name: 'Git pull'
+          command: |
+            echo '[showme.aurer.dev]:2222 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMFBzFz/kwhK/faa/J6WbIBvpGU3qeto+d8N8xXT8wOB+7WWfJLL0XmRx8vPCY8QYyhZtoVl8+8tdQHcNKEGk/TPomlqB++EDOAz2LIpzMiBTIi5EGUmd2iJjMuHDoJptQBC8fYFuiXPUIc3cqPXy2kjzRIi6d0JFZ/bzj8eAMit/NCXaQiKeA8arzt7TPCOCHskNVZtDAEmRh1Sx1+c4+qz5Zg/ESo3ZET7J+K634QIkMnf8f8jyPVh0IUBp8YW+mocx+PCV2p5r9Uf5Bfh3h7Ief470R3lmsIjFaLUX7gL6kTL0Y6LKOXyVUYjsRZH/keAIJlei8TiD0u8r4uCZT' >> ~/.ssh/known_hosts
+            ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
 workflows:
   build-and-test:
     jobs:
