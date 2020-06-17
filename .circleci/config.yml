@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-and-test:
+  test-and-deploy:
     executor:
       name: node/default
     steps:
@@ -11,18 +11,14 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-  deploy:
-    executor:
-      name: node/default
-    steps:
       - add_ssh_keys
       - run:
           name: 'Git pull'
           command: |
             echo '[showme.aurer.dev]:2222 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMFBzFz/kwhK/faa/J6WbIBvpGU3qeto+d8N8xXT8wOB+7WWfJLL0XmRx8vPCY8QYyhZtoVl8+8tdQHcNKEGk/TPomlqB++EDOAz2LIpzMiBTIi5EGUmd2iJjMuHDoJptQBC8fYFuiXPUIc3cqPXy2kjzRIi6d0JFZ/bzj8eAMit/NCXaQiKeA8arzt7TPCOCHskNVZtDAEmRh1Sx1+c4+qz5Zg/ESo3ZET7J+K634QIkMnf8f8jyPVh0IUBp8YW+mocx+PCV2p5r9Uf5Bfh3h7Ief470R3lmsIjFaLUX7gL6kTL0Y6LKOXyVUYjsRZH/keAIJlei8TiD0u8r4uCZT' >> ~/.ssh/known_hosts
             ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
+
 workflows:
   test-and-deploy:
     jobs:
-      - build-and-test
-      - deploy
+      - test-and-deploy
