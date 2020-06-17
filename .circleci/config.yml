@@ -15,7 +15,11 @@ jobs:
                 fingerprints:
                   - '72:4b:04:64:64:74:16:41:21:96:27:22:c2:b2:8a:e0'
                   - 'SHA256:wdyrAKV/EcfbxCJHAnbqC3DueqgEEmZo3l1H+sFsfk4'
-            - run: ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
+            - run:
+                name: 'Git pull'
+                command: |
+                  echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCp7EqdQefovPhzkEiJvWN+35qyi/4dWOtDvd+Y3wjTWzzW/r6zm0YZ5i4KZfgV1NBrN46VrvfHSFFX8lQBcmvSiL0b4KstHJ47YTWfaR5y4qDA4cwaBProwvCqLFbWUQw2L2p9cHBem/OF46HbvCV2a6zNiu+3cGUZ7qWb83nUeX0jTR7DNMyowLW81o1iCpTELnBqUtmG4wmFjJQvV+PBhCfaWW7KiAfQDGy5yXlzosnnZecrijy9jQfcB+zZU/d7nIcjuMs0lNXHeQjHtq2oDxUfkIiNIw3BTv7K4DS0C0bzhoRWo7h12s2DdYXjnGrGM0ZPSJ/BrahuvxX6HI4HDeLsEoiASv0hDQ1z/EW+B0TjXntdfofnPyM+82bkIV0qst5q51rAclgLOggB3OWLs5fGfSITbKG0qxZp/A5kb617XCP/wkcpINzQdwltcgL5u4/x1LkWPUvunBFv5LtGbDi8Op+sylUVvTr6naCig8A9NlWaL5NeEzTAKUmG8Yc=' >> ~/.ssh/known_hosts
+                  ssh circleci@showme.aurer.dev -p 2222 'sh update-showme.sh'
 workflows:
   build-and-test:
     jobs:
