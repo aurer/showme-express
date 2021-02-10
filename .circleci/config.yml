@@ -18,7 +18,7 @@ jobs:
           name: 'Setup'
           command: |
             ssh-keyscan -p 2222 $SERVER_IP >> ~/.ssh/known_hosts
-            ssh circleci@$SERVER_IP -p 2222 'ls -la'
+            ssh cibot@$SERVER_IP -p 2222 'ls -la'
 
 workflows:
   deploy:
