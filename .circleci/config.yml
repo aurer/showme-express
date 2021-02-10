@@ -12,8 +12,8 @@ jobs:
       - node/install:
           install-yarn: true
       - add_ssh_keys:
-        fingerprints:
-          - "c5:cc:ca:66:b6:a2:57:85:c9:e1:05:fd:52:8d:b7:82"
+          fingerprints:
+            - "c5:cc:ca:66:b6:a2:57:85:c9:e1:05:fd:52:8d:b7:82"
       - run:
           name: 'Setup'
           command: |
